@@ -96,17 +96,11 @@ async function buildServer() {
     io.emit("audience:count", getAudienceCount());
   }
 
-  app.get("/", async (_, reply) => {
-    reply.sendFile("index.html");
-  });
+  app.get("/", async (_, reply) => reply.sendFile("index.html"));
 
-  app.get("/official", async (_, reply) => {
-    reply.sendFile("official.html");
-  });
+  app.get("/official", async (_, reply) => reply.sendFile("official.html"));
 
-  app.get("/audience", async (_, reply) => {
-    reply.sendFile("audience.html");
-  });
+  app.get("/audience", async (_, reply) => reply.sendFile("audience.html"));
 
   app.get("/health", async () => ({
     ok: true,
