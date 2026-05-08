@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>官方控制台 | 5G 賽馬轉播平台</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <div class="topbar">
+        <div>
+          <h1>官方控制台</h1>
+          <div class="muted">馬匹設定、投票管理、雙 Tello 控制與手把操作</div>
+        </div>
+        <div class="pill" id="official-status">未連線</div>
+      </div>
+
+      <div class="layout">
+        <aside class="stack">
+          <section class="panel">
+            <h3>官方登入</h3>
+            <label for="official-key">Access Key</label>
+            <input id="official-key" type="password" placeholder="official-1234" />
+            <div class="btn-row" style="margin-top: 10px">
+              <button id="official-login">登入</button>
+              <button class="secondary" id="refresh-state">刷新資料</button>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h3>賽事狀態</h3>
+            <label for="race-lap">目前圈數</label>
+            <input id="race-lap" type="number" min="0" value="0" />
+            <div class="btn-row" style="margin-top: 8px">
+              <button data-race-status="ready">準備</button>
+              <button data-race-status="running">開始</button>
+            </div>
+            <div class="btn-row" style="margin-top: 8px">
+              <button class="warning" data-race-status="paused">暫停</button>
+              <button class="danger" data-race-status="finished">結束</button>
+            </div>
+            <div class="muted" id="audience-count" style="margin-top: 10px">觀眾 0 人</div>
+          </section>
+
+          <section class="panel">
+            <h3>馬匹設定</h3>
+            <label for="horse-number">編號</label>
+            <input id="horse-number" type="number" min="1" placeholder="1" />
+            <label for="horse-name" style="margin-top: 8px">名稱</label>
+            <input id="horse-name" type="text" placeholder="赤焰號" />
+            <label for="horse-color" style="margin-top: 8px">顏色</label>
+            <input id="horse-color" type="color" value="#3b82f6" />
+            <button id="save-horse" style="margin-top: 10px">新增馬匹</button>
+            <div id="horse-list" class="list" style="margin-top: 12px"></div>
+          </section>
+        </aside>
+
+        <section class="stack">
+          <section class="panel">
+            <h3>互動投票管理</h3>
+            <label for="poll-question">題目</label>
+            <input id="poll-question" type="text" placeholder="你看好哪一匹馬領先？" />
+            <label for="poll-options" style="margin-top: 8px">選項（每行一個）</label>
+            <textarea id="poll-options" placeholder="赤焰號&#10;閃電號&#10;黑旋風"></textarea>
+            <div class="btn-row" style="margin-top: 8px">
+              <button id="create-poll">建立投票</button>
+              <button class="danger" id="close-poll">關閉投票</button>
+            </div>
+            <div id="poll-live" style="margin-top: 12px"></div>
+          </section>
+
+          <section class="panel">
+            <h3>雙機控制與手把</h3>
+            <label for="drone-id">目標無人機</label>
+            <select id="drone-id"></select>
+            <div class="btn-row" style="margin-top: 8px">
+              <button data-drone-command="takeoff">起飛</button>
+              <button class="danger" data-drone-command="land">降落</button>
+              <button class="secondary" data-drone-command="stop">停止</button>
+            </div>
+            <div class="btn-row" style="margin-top: 8px">
+              <button data-drone-command="forward">前進</button>
+              <button data-drone-command="back">後退</button>
+            </div>
+            <div class="btn-row" style="margin-top: 8px">
+              <button data-drone-command="left">左移</button>
+              <button data-drone-command="right">右移</button>
+            </div>
+            <div class="btn-row" style="margin-top: 8px">
+              <button data-drone-command="up">上升</button>
+              <button data-drone-command="down">下降</button>
+            </div>
+            <div class="btn-row" style="margin-top: 8px">
+              <button id="enable-gamepad">啟用手把</button>
+              <button class="secondary" id="disable-gamepad">停用手把</button>
+            </div>
+            <div class="muted" id="gamepad-status" style="margin-top: 10px">手把未啟用</div>
+          </section>
+
+          <section class="panel">
+            <h3>即時監看</h3>
+            <div id="drone-streams" class="streams"></div>
+          </section>
+        </section>
+      </div>
+    </main>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/official.js"></script>
+  </body>
+</html>

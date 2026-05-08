@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>觀眾入口 | 5G 賽馬轉播平台</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <div class="topbar">
+        <div>
+          <h1>觀眾即時轉播</h1>
+          <div class="muted">雙畫面直播、即時投票、高互動賽事體驗</div>
+        </div>
+        <div class="pill" id="audience-status">連線中...</div>
+      </div>
+
+      <div class="layout">
+        <aside class="stack">
+          <section class="panel">
+            <h3>賽況資訊</h3>
+            <div class="muted" id="race-status">狀態：--</div>
+            <div class="muted" id="race-lap">圈數：--</div>
+            <div class="muted" id="online-audience">目前觀眾：0</div>
+          </section>
+
+          <section class="panel">
+            <h3>馬匹名單</h3>
+            <div id="horse-list" class="list"></div>
+          </section>
+
+          <section class="panel">
+            <h3>即時投票</h3>
+            <div id="poll-live" class="muted">等待官方開啟投票...</div>
+          </section>
+        </aside>
+
+        <section class="stack">
+          <section class="panel">
+            <h3>雙機直播畫面</h3>
+            <div id="drone-streams" class="streams"></div>
+          </section>
+        </section>
+      </div>
+    </main>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/audience.js"></script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "5g_final",
+  "version": "1.0.0",
+  "description": "5G horse race broadcast and interaction platform for dual Tello drones",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "node --test",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "tello": "python tello-client/tello_bridge.py"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@fastify/static": "^9.1.3",
+    "dotenv": "^17.4.2",
+    "fastify": "^5.8.5",
+    "socket.io": "^4.8.3",
+    "sqlite3": "^6.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
